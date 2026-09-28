@@ -9,6 +9,7 @@ license: MIT
 Turn one model JSON into several design views (logical/physical ER, business flow,
 screen navigation, API call map), validate them, and browse them in a local viewer.
 All views come from the same source, so editing the model keeps every diagram in sync.
+A hand-written concept (domain) diagram can be included as a `static` view.
 
 ## When to use
 
@@ -43,6 +44,14 @@ All views come from the same source, so editing the model keeps every diagram in
 6. Optionally add project-specific checks as adapters in `domain-blueprint.config.json`
    `adapters` (see `references/adapters.md`). An adapter exports an `adapter` function that
    returns `{ errors, warnings }`.
+7. Add a concept (domain) diagram. The tool does not generate this; write it by hand.
+   - Create `docs/domain/domain.d2` (concepts, aggregates, value objects, and their
+     relationships — not tables). Start from `template/domain.d2`.
+   - Add it as a `static` view with `source` so `build` compiles it:
+     ```json
+     { "key": "domain", "label": "Domain", "kind": "static", "source": "docs/domain/domain.d2", "layout": "elk" }
+     ```
+   Without `source`, a `static` view just shows an existing pre-rendered `<key>.svg`.
 
 ## Commands
 

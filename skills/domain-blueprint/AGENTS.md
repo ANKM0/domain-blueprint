@@ -9,7 +9,8 @@ Guidance for agents working on this repository. Run commands from
   and `ajv`. No `Bun.*` APIs; the code must run on both Node and bun.
 - `template/` — files copied into consumer projects.
 - `references/` — docs referenced by `SKILL.md`.
-- `examples/minimal/` — runnable example (uses `../../template` for model/schema).
+- `examples/minimal/` — runnable example (uses `../../template` for model/schema; includes a
+  hand-written `domain.d2` concept diagram shown via a `static` view with `source`).
 
 ## Commands
 

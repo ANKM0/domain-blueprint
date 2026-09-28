@@ -1,0 +1,25 @@
+direction: right
+
+# A hand-written concept diagram: the domain's concepts and relationships,
+# not the database tables (that is the logical/physical ER views).
+heading: "Task management — domain concepts" {
+  shape: text
+  style.font-size: 22
+}
+
+task: "Task\n(aggregate root)" {
+  style.fill: "#e8f0ff"
+}
+note: "Note\n(entity)" {
+  style.fill: "#e8f0ff"
+}
+status: "Status\n(value object)\ntodo | done" {
+  style.fill: "#fdf3e3"
+}
+task_title: "Title\n(value object)" {
+  style.fill: "#fdf3e3"
+}
+
+task -> note: "has many"
+task -> status: "has"
+task -> task_title: "has"
