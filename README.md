@@ -12,6 +12,7 @@ Its `SKILL.md` tells an agent how to install it into another project.
 Generated from the dummy task-management model in
 [`skills/domain-blueprint/examples/minimal`](skills/domain-blueprint/examples/minimal).
 The viewer switches between every view, and each diagram comes from the same model.
+Drag with the mouse to pan; use the zoom buttons or Ctrl/⌘ + wheel to zoom.
 
 <table>
   <tr>
