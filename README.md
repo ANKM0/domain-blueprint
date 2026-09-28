@@ -7,6 +7,30 @@ Every view comes from the same source, so editing the model keeps all diagrams i
 The installable agent skill lives in [`skills/domain-blueprint/`](skills/domain-blueprint/).
 Its `SKILL.md` tells an agent how to install it into another project.
 
+## Usage example
+
+Generated from the dummy task-management model in
+[`skills/domain-blueprint/examples/minimal`](skills/domain-blueprint/examples/minimal).
+The viewer switches between every view, and each diagram comes from the same model.
+
+<table>
+  <tr>
+    <td align="center"><img src="docs/images/viewer-logical.png" width="420" alt="Logical ER"><br><sub>Logical ER</sub></td>
+    <td align="center"><img src="docs/images/viewer-physical.png" width="420" alt="Physical ER"><br><sub>Physical ER</sub></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="docs/images/viewer-flow.png" width="420" alt="Flow"><br><sub>Flow</sub></td>
+    <td align="center"><img src="docs/images/viewer-nav.png" width="420" alt="Screens"><br><sub>Screens</sub></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="docs/images/viewer-api.png" width="420" alt="API"><br><sub>API</sub></td>
+    <td align="center"><img src="docs/images/logical.svg" width="420" alt="Logical ER diagram"><br><sub>Diagram source: SVG</sub></td>
+  </tr>
+</table>
+
+Raw diagrams: [logical](docs/images/logical.svg) · [physical](docs/images/physical.svg) ·
+[flow](docs/images/flow.svg) · [nav](docs/images/nav.svg) · [api](docs/images/api.svg)
+
 ## Install as an agent skill
 
 ```bash
