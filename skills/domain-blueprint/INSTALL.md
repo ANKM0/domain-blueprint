@@ -4,8 +4,8 @@ Paste the following into your coding agent from the root of the target project:
 
 ---
 
-Read https://github.com/ANKM0/domain-blueprint (and its `SKILL.md`), then install
-`domain-blueprint` into this project:
+Read https://github.com/ANKM0/domain-blueprint (and its `skills/domain-blueprint/SKILL.md`),
+then install `domain-blueprint` into this project:
 
 1. Copy `src/` and `template/` from that repository into `tools/domain-blueprint/`.
 2. Create `domain-blueprint.config.json` from `tools/domain-blueprint/template/domain-blueprint.config.json`.

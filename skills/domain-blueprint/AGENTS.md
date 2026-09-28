@@ -1,6 +1,7 @@
 # AGENTS.md
 
-Guidance for agents working on this repository.
+Guidance for agents working on this repository. Run commands from
+`skills/domain-blueprint/` unless noted.
 
 ## Layout
 
