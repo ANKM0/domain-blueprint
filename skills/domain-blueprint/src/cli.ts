@@ -69,6 +69,7 @@ async function generate(config: ResolvedConfig): Promise<void> {
   const outDir = resolveConfigPath(config, config.outDir);
   mkdirSync(outDir, { recursive: true });
   for (const view of config.views) {
+    if (view.kind === "static") continue;
     const d2 = renderD2(model, view.kind, { typeMap: config.typeMap, i18n: config.i18n });
     writeFileSync(join(outDir, `${view.key}.d2`), d2);
     console.log(`wrote ${view.key}.d2`);
@@ -79,6 +80,7 @@ async function generate(config: ResolvedConfig): Promise<void> {
 function compile(config: ResolvedConfig): void {
   const outDir = resolveConfigPath(config, config.outDir);
   for (const view of config.views) {
+    if (view.kind === "static") continue;
     const input = join(outDir, `${view.key}.d2`);
     const output = join(outDir, `${view.key}.svg`);
     const args = ["--pad", "10"];
@@ -135,6 +137,7 @@ async function main(argv: string[]): Promise<void> {
       const config = requireConfig(args);
       await generate(config);
       compile(config);
+      patch(config);
       return;
     }
     case "patch":
