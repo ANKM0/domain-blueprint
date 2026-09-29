@@ -9,22 +9,20 @@ import type { Model } from "./model.ts";
 // The tool merges their output into the auto graph, which is then merged with the
 // manual presentation to build the model the views render.
 
-const DICT_KEYS = ["domains", "entities", "screens", "api"] as const;
-const LIST_KEYS = ["relations", "navigation", "screenCalls"] as const;
+const DICT_KEYS = ["domains", "entities", "screens", "api"];
+const LIST_KEYS = ["relations", "navigation", "screenCalls"];
 
 export type PartialModel = Partial<Model>;
 
 function mergePartial(auto: PartialModel, partial: PartialModel): void {
-  for (const key of DICT_KEYS) {
-    const value = partial[key];
-    if (value) auto[key] = { ...(auto[key] ?? {}), ...value } as never;
+  const target = auto as Record<string, unknown>;
+  for (const [key, value] of Object.entries(partial)) {
+    if (value === undefined) continue;
+    if (DICT_KEYS.includes(key)) target[key] = { ...((target[key] ?? {}) as object), ...(value as object) };
+    else if (LIST_KEYS.includes(key)) target[key] = [...((target[key] ?? []) as unknown[]), ...(value as unknown[])];
+    else if (key === "flows") target[key] = { ...((target[key] ?? {}) as object), ...(value as object) };
+    else target[key] = value;
   }
-  for (const key of LIST_KEYS) {
-    const value = partial[key];
-    if (value) auto[key] = [...((auto[key] ?? []) as unknown[]), ...(value as unknown[])] as never;
-  }
-  if (partial.flows) auto.flows = { ...(auto.flows ?? {}), ...partial.flows };
-  if (partial.persistence) auto.persistence = partial.persistence;
 }
 
 export function runExtractors(config: ResolvedConfig): PartialModel {
