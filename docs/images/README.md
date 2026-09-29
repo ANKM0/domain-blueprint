@@ -5,6 +5,7 @@ task-management model in `skills/domain-blueprint/examples/minimal`.
 
 - `viewer-<view>.png` — the viewer, one screenshot per tab.
 - `<view>.svg` — the generated diagrams (domain / logical / physical / flow / nav / api).
+  The `graph` view is interactive and generated as `<key>.json`, so it has a screenshot only.
 
 ## Regenerate
 
@@ -19,6 +20,7 @@ node src/cli.ts serve --config examples/minimal/domain-blueprint.config.json --p
 ```
 
 Then capture each tab with any headless browser (for example Playwright):
-open the printed URL, click `button[data-view="<domain|logical|physical|flow|nav|api>"]`,
-and screenshot. The committed screenshots were taken at 1280x860 with a 2x device
+open the printed URL, click `button[data-view="<domain|logical|physical|flow|nav|api|graph>"]`,
+and screenshot. For the `graph` tab, wait for vis-network to finish rendering before capturing.
+The committed screenshots were taken at 1280x860 with a 2x device
 scale factor. `d2` must be on PATH.

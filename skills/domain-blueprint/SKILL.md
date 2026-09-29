@@ -7,9 +7,9 @@ license: MIT
 # domain-blueprint
 
 Turn one model JSON into several design views (logical/physical ER, business flow,
-screen navigation, API call map), validate them, and browse them in a local viewer.
-All views come from the same source, so editing the model keeps every diagram in sync.
-A hand-written concept (domain) diagram can be included as a `static` view.
+screen navigation, API call map, and an interactive API graph), validate them, and browse them
+in a local viewer. All views come from the same source, so editing the model keeps every
+diagram in sync. A hand-written concept (domain) diagram can be included as a `static` view.
 
 ## When to use
 
@@ -34,7 +34,11 @@ A hand-written concept (domain) diagram can be included as a `static` view.
 3. Create the model:
    - `docs/domain/domain-model.schema.json` from `template/model.schema.json`.
    - `docs/domain/domain-model.json` describing the project's domains, entities, relations,
-     flows, screens, navigation, and api. Ask the user about the domain, or extract it from code.
+     flows, screens, navigation, api, and optionally `screenCalls`. Ask the user about the
+     domain, or extract it from code.
+   - `screenCalls` record which screen calls which JSON API. The `graph` view uses them to draw
+     screen-to-API edges and to tell screen-called endpoints from server-only ones (see
+     `references/model.md`).
 4. Point the config at the model, schema, and an output directory:
    ```json
    { "model": "docs/domain/domain-model.json", "schema": "docs/domain/domain-model.schema.json", "outDir": "docs/domain/generated" }
