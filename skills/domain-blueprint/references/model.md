@@ -29,6 +29,9 @@ The model is the single source for every view.
     "S01": { "name": "Task list", "entities": ["tasks"], "onLoad": "html_tasks_page" }
   },
   "navigation": [{ "from": "S01", "on": "open task", "to": "S02", "call": "html_tasks_update" }],
+  "screenCalls": [
+    { "screen": "S01", "trigger": "GET", "view": "S01", "gateway": "task-list", "api": "tasks_list" }
+  ],
   "api": {
     "tasks_list": { "kind": "api", "method": "GET", "path": "/api/tasks", "operation": "list", "entity": "tasks", "success": 200 },
     "html_tasks_page": { "kind": "html", "method": "GET", "path": "/tasks", "operation": "load", "entity": "tasks", "success": 200 }
@@ -43,5 +46,8 @@ The model is the single source for every view.
 - `screens[].references` are logical API references (drawn dashed; not real calls).
 - `navigation[].call` references an `api` key; the call map draws it as a real call.
 - `api[].kind` is `api` (JSON API) or `html` (server-rendered UI endpoint).
+- `screenCalls[]` are calls a screen makes to a JSON API (`api[].kind: "api"`). The `graph` view
+  uses them to draw screen-to-API edges and to tell screen-called endpoints from server-only ones;
+  `trigger`, `view`, and `gateway` are labels for that call.
 
 See `template/model.schema.json` for the full schema.

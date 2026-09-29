@@ -1,8 +1,8 @@
 # domain-blueprint
 
 Turn one model JSON into several design views — logical/physical ER, business flow,
-screen navigation, and an API call map — then browse them in a local viewer.
-Every generated view comes from the same source, so editing the model keeps all diagrams
+screen navigation, an API call map, and an interactive API graph — then browse them in a local
+viewer. Every generated view comes from the same source, so editing the model keeps all diagrams
 in sync. A hand-written concept (domain) diagram can be shown alongside as a `static` view.
 
 The installable agent skill lives in [`skills/domain-blueprint/`](skills/domain-blueprint/).
@@ -28,11 +28,15 @@ Drag with the mouse to pan; use the zoom buttons or Ctrl/⌘ + wheel to zoom.
     <td align="center"><img src="docs/images/viewer-nav.png" width="420" alt="Screens"><br><sub>Screens</sub></td>
     <td align="center"><img src="docs/images/viewer-api.png" width="420" alt="API"><br><sub>API</sub></td>
   </tr>
+  <tr>
+    <td colspan="2" align="center"><img src="docs/images/viewer-graph.png" width="420" alt="API graph"><br><sub>API graph (interactive; drag to pan and hover for read/write detail)</sub></td>
+  </tr>
 </table>
 
 Raw diagrams: [domain](docs/images/domain.svg) · [logical](docs/images/logical.svg) ·
 [physical](docs/images/physical.svg) · [flow](docs/images/flow.svg) · [nav](docs/images/nav.svg) ·
-[api](docs/images/api.svg)
+[api](docs/images/api.svg). The `graph` view is interactive and generated as `<key>.json`, so it
+has no static SVG; the viewer serves it.
 
 ## Install as an agent skill
 
@@ -56,7 +60,8 @@ node src/cli.ts serve --config examples/minimal/domain-blueprint.config.json
 ```
 
 `build` validates the model, writes `*.d2`, compiles them with
-[d2](https://d2lang.com) (must be on PATH), patches the SVGs, and writes `viewer.html`.
+[d2](https://d2lang.com) (must be on PATH), patches the SVGs, writes the interactive graph JSON,
+and writes `viewer.html`.
 Node.js >= 22.6 strips TypeScript types; on 22.6–23.5 add `--experimental-strip-types`.
 
 ## Layout
